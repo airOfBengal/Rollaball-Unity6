@@ -23,8 +23,17 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue)
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
-        
+
         movementX = movementVector.x;
         movementY = movementVector.y;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Respawn"))
+        {
+            other.gameObject.SetActive(false);
+            // You can add code here to update the score or perform other actions
+        }
     }
 }
